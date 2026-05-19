@@ -69,23 +69,23 @@ Scroll down to "Environment Variables" and add:
 3. Test API endpoint: `https://smart-complaint-backend.onrender.com/api/complaints`
    - Should return: `{"success": false, "message": "Not authorized, no token"}` (this is expected)
 
-## Step 3: Deploy Frontend on Render
+## Step 3: Deploy Frontend on Render (Static Site)
 
-### 3.1 Create Frontend Service
+### 3.1 Create Frontend Static Site
 
 1. Go back to Render Dashboard: https://dashboard.render.com
-2. Click "New +" → "Web Service"
+2. Click "New +" → "Static Site"
 3. Select the same repository: `kush1246/ese`
 4. **Important**: Set the root directory to `frontend`
    - Click "Advanced" → "Root Directory"
    - Enter: `frontend`
-5. Configure the service:
+5. Configure the static site:
    - **Name**: `smart-complaint-frontend`
    - **Region**: Same region as backend
    - **Branch**: `main`
-   - **Runtime**: Node
    - **Build Command**: `npm install && npm run build`
-   - **Start Command**: `npm run preview`
+   - **Publish Directory**: `dist`
+   - **No Start Command needed** (static sites don't need a start command)
 
 ### 3.2 Add Environment Variables
 
@@ -97,8 +97,8 @@ Scroll down to "Environment Variables" and add:
 
 ### 3.3 Deploy Frontend
 
-1. Click "Create Web Service"
-2. Wait for deployment (3-5 minutes)
+1. Click "Create Static Site"
+2. Wait for deployment (2-3 minutes) - faster than web service
 3. Once deployed, you'll see a live URL like: `https://smart-complaint-frontend.onrender.com`
 
 ### 3.4 Test Frontend
